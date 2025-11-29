@@ -1,7 +1,24 @@
 \section{Strategien}
 
-\begin{frame}{Bar}
+\begin{frame}{Modellierung}
     \begin{itemize}
-        \item \lipsum[3]
+        \item Abwandlung Wahlfunktion $w: P \rightarrow W$ zu Strategie $s^{p_i}: G^1 \rightarrow W$ \\
+        $\Rightarrow$ $s^{p_i}_k(G^1_{k-1}) = \ldots$ \\
+        $\Rightarrow$ Zugriff auf Ergebnis letzter Runde: Auslegung des Spiels ist \textbf{Memory-One}
+        $\Rightarrow$ \textit{Spielen} einer Runde $G_k$ ist Zustandsübergang in Markov-Kette
+        \item Spiel und Auszahlungsmatrix ändern sich nicht: Strategien $s^{p_1}, s^{p_2}$ implizieren Markov-Kette
+        \item Daher: Strategie $s^{p_i}$ ausdrückbar als Vektor $v_{s^{p_i}} = (P_{(C, C)}, P_{(C, D)}, P_{(D, C)}, P_{(D, D)})$,
+        wobei $P_{W \times W}$ ist Wahrscheinlichkeit, dass Spieler $p_i$ in Runde $k$ wegen Ergebnis($G^1_{k-1}$) $ = (W, W)$ \textbf{kooperiert}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Beispiele}
+    \begin{itemize}
+        \item All-Defect: $(0, 0, 0, 0)$
+        \item All-Cooperate: $(1, 1, 1, 1)$
+        \item Tit-For-Tat: $(1, 0, 1, 0)$
+        \item Generous Tit-For-Tat: $(1, q, 1, q)$ mit $0 < q \leq \frac{3}{10}$
+        \item Win-Stay Lose-Shift: $(1, 0, 0, 1)$
+        \item Random: $(\frac{1}{2}, \frac{1}{2}, \frac{1}{2}, \frac{1}{2})$
     \end{itemize}
 \end{frame}
