@@ -2,6 +2,27 @@
 
 \begin{frame}{Modellierung}
     \begin{itemize}
-        \item \lipsum[3]
+        \item Spiel $G$ mit Spielern $p_1, p_2 \in P$
+        \item Wahlmöglichkeit $W = C \text{ (Cooperate)} \; \vert \; D \text{ (Defect)}$
+        \item Wahlfunktion $w: P \rightarrow W$
+        \item Ergebnis($G$) $ \in W \times W = \left\{ CC, CD, DC, DD \right\}$, Ergebnis($G$) $ = (w(p_1), w(p_2))$
+        \item Vier abstrakte Kenngrößen:
+        \begin{itemize}
+            \item Reward $R \in \mathbb{R}$ (CC)
+            \item Temptation $T \in \mathbb{R}$ (C\textbf{D}/\textbf{D}C)
+            \item Punishment $P \in \mathbb{R}$ (DD)
+            \item Sucker's Payoff $S \in \mathbb{R}$ (\textbf{C}D/D\textbf{C})
+        \end{itemize}
+        \item Es gilt: $T > R > P > S \land 2R > T + S$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Modellierung: Erweiterung um Iterationen}
+    \begin{itemize}
+        \item Einfaches Spiel $G$ wird $n \in \mathbb{N}^+$ mal iteriert: $G^n$
+        \item Jede Iteration (Runde) $k \in \mathbb{N}^+$ ist selbst (einfaches) Spiel $G_k$ der Länge $1$
+        \item Ergebnis($G^n$) $ = \left[ \text{Ergebnis}(G_1), \ldots , \text{Ergebnis}(G_n) \right]$
+        \item $n \in \mathbb{N}^+$ ist beliebig, aber fest und unbekannt für $p_1, p_2$
+        \item Warum? Wenn $n$ bekannt: Nash-Equilibrium bei $w(\_) = C$ (Induktion, Tafel)
     \end{itemize}
 \end{frame}
