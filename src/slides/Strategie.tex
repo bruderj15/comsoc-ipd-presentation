@@ -3,12 +3,12 @@
 \begin{frame}{Modellierung}
     \begin{itemize}
         \item Abwandlung Wahlfunktion $w: P \rightarrow W$ zu Strategie $s^{p_i}: G^1 \rightarrow W$ \\
-        $\Rightarrow$ $s^{p_i}_k(G^1_{k-1}) = \ldots$ \\
+        $\Rightarrow$ $s^{p_i}_k(G^1_{r-1}) = \ldots$ \\
         $\Rightarrow$ Zugriff auf Ergebnis letzter Runde: Auslegung des Spiels ist \textbf{Memory-One}
-        $\Rightarrow$ \textit{Spielen} einer Runde $G_k^n$ ist Zustandsübergang in Markov-Kette der Länge $n$
+        $\Rightarrow$ \textit{Spielen} einer Runde $G_r^n$ ist Zustandsübergang in Markov-Kette der Länge $n$
         \item Spiel und Auszahlungsmatrix ändern sich nicht: Strategien $s^{p_1}, s^{p_2}$ implizieren Markov-Matrix
         \item Daher: Strategie $s^{p_i}$ ausdrückbar als Vektor $v_{s^{p_i}} = (P_{(C, C)}, P_{(C, D)}, P_{(D, C)}, P_{(D, D)})$,
-        wobei $P_{W \times W}$ ist Wahrscheinlichkeit, dass Spieler $p_i$ in Runde $k$ wegen Ergebnis($G^1_{k-1}$) $ = (w_1, w_2)$ \textbf{kooperiert}
+        wobei $P_{W \times W}$ ist Wahrscheinlichkeit, dass Spieler $p_i$ in Runde $r$ wegen Ergebnis($G^1_{r-1}$) $ = (w_1, w_2)$ \textbf{kooperiert}
     \end{itemize}
 \end{frame}
 
