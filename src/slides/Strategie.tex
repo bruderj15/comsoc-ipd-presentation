@@ -5,10 +5,10 @@
         \item Abwandlung Wahlfunktion $w: P \rightarrow W$ zu Strategie $s^{p_i}: G^1 \rightarrow W$ \\
         $\Rightarrow$ $s^{p_i}_k(G^1_{k-1}) = \ldots$ \\
         $\Rightarrow$ Zugriff auf Ergebnis letzter Runde: Auslegung des Spiels ist \textbf{Memory-One}
-        $\Rightarrow$ \textit{Spielen} einer Runde $G_k$ ist Zustandsübergang in Markov-Kette
+        $\Rightarrow$ \textit{Spielen} einer Runde $G_k^n$ ist Zustandsübergang in Markov-Kette der Länge $n$
         \item Spiel und Auszahlungsmatrix ändern sich nicht: Strategien $s^{p_1}, s^{p_2}$ implizieren Markov-Matrix
         \item Daher: Strategie $s^{p_i}$ ausdrückbar als Vektor $v_{s^{p_i}} = (P_{(C, C)}, P_{(C, D)}, P_{(D, C)}, P_{(D, D)})$,
-        wobei $P_{W \times W}$ ist Wahrscheinlichkeit, dass Spieler $p_i$ in Runde $k$ wegen Ergebnis($G^1_{k-1}$) $ = (W, W)$ \textbf{kooperiert}
+        wobei $P_{W \times W}$ ist Wahrscheinlichkeit, dass Spieler $p_i$ in Runde $k$ wegen Ergebnis($G^1_{k-1}$) $ = (w_1, w_2)$ \textbf{kooperiert}
     \end{itemize}
 \end{frame}
 
@@ -20,5 +20,34 @@
         \item Generous Tit-For-Tat: $(1, q, 1, q)$ mit $0 < q \leq \frac{3}{10}$
         \item Win-Stay Lose-Shift: $(1, 0, 0, 1)$
         \item Random: $(\frac{1}{2}, \frac{1}{2}, \frac{1}{2}, \frac{1}{2})$
+        \item Live Demo
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Markov-Matrix des IPD}
+    \[
+        M =
+        \begin{bmatrix}
+            P^1_{(C, C)} P^2_{(C, C)}
+            & P^1_{(C, C)}(1-P^2_{(C, C)})
+            & (1-P^1_{(C, C)}) P^2_{(C, C)}
+            & (1-P^1_{(C, C)})(1-P^2_{(C, C)}) \\[4pt]
+            P^1_{(C, D)} P^2_{(D, C)}
+            & P^1_{(C, D)}(1-P^2_{(D, C)})
+            & (1-P^1_{(C, D)}) P^2_{(D, C)}
+            & (1-P^1_{(C, D)})(1-P^2_{(D, C)}) \\[4pt]
+            P^1_{(D, C)} P^2_{(C, D)}
+            & P^1_{(D, C)}(1-P^2_{(C, D)})
+            & (1-P^1_{(D, C)}) P^2_{(C, D)}
+            & (1-P^1_{(D, C)})(1-P^2_{(C, D)}) \\[4pt]
+            P^1_{(D, D)} P^2_{(D, D)}
+            & P^1_{(D, D)}(1-P^2_{(D, D)})
+            & (1-P^1_{(D, D)}) P^2_{(D, D)}
+            & (1-P^1_{(D, D)})(1-P^2_{(D, D)})
+        \end{bmatrix}
+    \]
+    \begin{itemize}
+        \item $M$ ist zeilen- und spalten-indiziert nach lexikografischer Ordnung über Zustand $W \times W$
+        \item Zustandsübergang $(w_1, w_2) \xrightarrow{P_{((w_1, w_2), (w_3, w_4))}} (w_3, w_4)$ mit Übergangswahrscheinlichekit $P_{((w_1, w_2), (w_3, w_4))} = m_{((w_1, w_2), (w_3, w_4))}$
     \end{itemize}
 \end{frame}
