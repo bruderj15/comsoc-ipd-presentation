@@ -24,7 +24,22 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Markov-Matrix des IPD}
+\begin{frame}{Markov-Kette}
+    \begin{itemize}
+        \item IPD ist Zustandsübergangssystem mit Zustandsraum $Z = W \times W = \left\{ (C, C), (C, D), (D, C), (D, D) \right\}$
+        \item Genauer: IPD ist Markov-Prozess $(X_r)_{r\in \mathbb{N}^+_{< n}}$ der Länge $n \in \mathbb{N}^+$, es gilt Markov-Eigenschaft:
+        \[
+            \forall r \in \mathbb{N}^+_{< n}, \. \forall z \in Z:
+            P\bigl( X_{r + 1} = z_{r + 1} \,\big|\,X_r = z_r, \dots, X_1 = z_1 \bigr) =
+            P\bigl( X_{r + 1} = z_{r + 1} \,\big|\, X_r = x_r \bigr)
+        \]
+        \item Markov-Prozess des IPD ist diskret, endlich $\Rightarrow$ diskrete Markov-Kette
+        \item Zudem: Übergangswahrscheinlichkeiten sind stationär (runden-unabhängig)
+        \item Daher: Markov-Kette ist homogen: $ \forall r, r\prime \in \mathbb{N}^+_{< n}, \. \forall z_1, z_2 \in Z: \bigl( X_{r + 1} = z_2 \,\big|\, X_r = z_1 \bigr) = \bigl( X_{r\prime + 1} = z_2 \,\big|\, X_{r\prime} = z_1 \bigr)$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Markov-Matrix}
     \[
         M =
         \begin{bmatrix}
@@ -47,7 +62,7 @@
         \end{bmatrix}
     \]
     \begin{itemize}
-        \item $M$ ist zeilen- und spalten-indiziert nach lexikografischer Ordnung über Zustand $W \times W$
-        \item Zustandsübergang $(w_1, w_2) \xrightarrow{P_{((w_1, w_2), (w_3, w_4))}} (w_3, w_4)$ mit Übergangswahrscheinlichekit $P_{((w_1, w_2), (w_3, w_4))} = m_{((w_1, w_2), (w_3, w_4))}$
+        \item $M$ ist zeilen- und spalten-indiziert nach lexikografischer Ordnung über Zustand $Z = W \times W$
+        \item Zustandsübergang $(w_1, w_2) \xrightarrow{P_{((w_1, w_2), (w_3, w_4))}} (w_3, w_4)$ mit Übergangswahrscheinlichkeit $P_{((w_1, w_2), (w_3, w_4))} = m_{((w_1, w_2), (w_3, w_4))}$
     \end{itemize}
 \end{frame}
