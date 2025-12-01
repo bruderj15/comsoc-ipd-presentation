@@ -2,11 +2,11 @@
 
 \begin{frame}{Modellierung (PD)}
     \begin{itemize}
-        \item Spiel $G$ mit Spielern $p_1, p_2 \in P$
+        \item Spiel $g \in G$ mit Spielern $p_1, p_2 \in P$
         \item Wahlmöglichkeit $W = \left\{ C \text{ (Cooperate)}, D \text{ (Defect)} \right\}$
         \item Wahlfunktion $w: P \rightarrow W$
-        \item Ergebnis($G$) $ \in W \times W = \left\{ (C, C), (C, D), (D, C), (D, D) \right\}$ mit \\
-            Ergebnis($G$) $ = (w(p_1), w(p_2))$
+        \item Ergebnis($g$) $ \in W \times W = \left\{ (C, C), (C, D), (D, C), (D, D) \right\}$ mit \\
+            Ergebnis($g$) $ = (w(p_1), w(p_2))$
         \item Vier abstrakte Kenngrößen:
         \begin{itemize}
             \item Reward $R \in \mathbb{R}$ ((C, C))
@@ -20,9 +20,9 @@
 
 \begin{frame}{Modellierung: Erweiterung um Iterationen (IPD)}
     \begin{itemize}
-        \item Einfaches Spiel $G$ wird $n \in \mathbb{N}^+$ mal iteriert: $G^n$
-        \item Jede Iteration (Runde) $r \in \mathbb{N}^+_{\leq n}$ ist selbst (einfaches) Spiel $G_r^1$
-        \item Ergebnis($G^n$) $ = \left[ \text{Ergebnis}(G_1^1), \ldots , \text{Ergebnis}(G_n^1) \right]$
+        \item Einfaches Spiel $g \in G$ wird $n \in \mathbb{N}^+$ mal iteriert: $g_n \in G^n$
+        \item Jede Iteration (Runde) $r \in \mathbb{N}^+_{\leq n}$ ist selbst (einfaches) Spiel $g_1 \in G^1$
+        \item Ergebnis($g_n$) $ = \left[ \text{Ergebnis}(g_{1_1}), \ldots , \text{Ergebnis}(g_{1_n}) \right]$
         \item $n \in \mathbb{N}^+$ ist beliebig, aber fest und unbekannt für $p_1, p_2$
         \item Warum? Wenn $n$ bekannt: Nash-Equilibrium bei $w(\_) = C$ (Induktion, Tafel)
     \end{itemize}
