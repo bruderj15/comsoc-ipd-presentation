@@ -83,3 +83,22 @@
         \end{itemize}
     \end{itemize}
 \end{frame}
+
+\begin{frame}{Zero-Determinant Strategies}
+    \begin{itemize}
+        \item \enquote{\textit{Geniale}} \cite{hilbe-nowak-sigmund-2013} Definition neuer Klasse von Strategien $ZD \subset S$, die LGS erfüllen:
+            {\setlength{\jot}{0.5pt}
+        \begin{align}
+            1 - P_{(C, C)} &= \alpha R + \beta R + \gamma \\
+            1 - P_{(C, D)} &= \alpha S + \beta T + \gamma \\
+            P_{(D, C)}     &= \alpha T + \beta S + \gamma \\
+            P_{(D, D)}     &= \alpha P + \beta P + \gamma
+        \end{align}}
+        \item Behauptung: $\forall n \in \mathbb{N}^+, \, \forall g_n \in G^n, \, \forall p_1, p_2 \in P, \, \exists s^{p_1} \in ZD, \, \forall s^{p_2} \in S, \, \exists \alpha, \beta, \gamma \in \mathbb{R}: \alpha\text{score}_{g_n}(s^{p_1}) + \beta\text{score}_{g_n}(s^{p_2}) + \gamma = 0$ (Beweisidee Tafel) \cite{hilbe-nowak-sigmund-2013, press-dyson-2012}
+        \item Unterteilung $ZD = F\,\text{(Forcierung)}\,\dot{\cup}\,E\,\text{(Erpressung)}$ in Sub-Klassen:
+        \begin{itemize}
+            \item $F$ mit $\alpha = 0 \neq \beta \rightarrow \text{score}_{g_n}(s^{p_2}) = \frac{-\gamma}{\beta}$
+            \item $E$ mit $\gamma = -(\alpha + \beta)P \land \chi \coloneqq \frac{-\beta}{\alpha} > 1 \rightarrow \text{score}_{g_n}(s^{p_1}) - P = \chi(\text{score}_{g_n}(s^{p_2}) - P)$
+        \end{itemize}
+    \end{itemize}
+\end{frame}
