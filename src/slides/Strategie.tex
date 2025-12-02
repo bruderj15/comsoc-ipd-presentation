@@ -6,7 +6,7 @@
         $\Rightarrow$ $s^{p_i}_r(g_{1_{r-1}}) = \ldots$ \\
         $\Rightarrow$ Zugriff auf Ergebnis letzter Runde: Auslegung des Spiels ist \textbf{Memory-One}
         $\Rightarrow$ \textit{Spielen} einer Runde $g_{n_r}$ ist Zustandsübergang in Markov-Kette der Länge $n$
-        \item Spiel und Auszahlungsmatrix ändern sich nicht: Strategien $s^{p_1}, s^{p_2}$ implizieren Markov-Matrix
+        \item Spiel und Auszahlungsmatrix ändern sich nicht: Strategien $s^{p_1}, s^{p_2}$ implizieren Markov-Matrix \cite{press-dyson-2012}
         \item Daher: Strategie $s^{p_i}$ ausdrückbar als Vektor $v_{s^{p_i}} = (P_{(C, C)}, P_{(C, D)}, P_{(D, C)}, P_{(D, D)})$,
         wobei $P_{W \times W}$ ist Wahrscheinlichkeit, dass Spieler $p_i$ in Runde $r$ wegen Ergebnis($g_{1_{r-1}}$) $ = (w_1, w_2)$ \textbf{kooperiert}
         \item Score pro Spieler ist Anzahl in Zuständen mit Konfiguration $R, T, S, P$: $R\#(C,C) + \ldots + P\#(D,D)$
@@ -28,7 +28,7 @@
 \begin{frame}{Markov-Kette}
     \begin{itemize}
         \item IPD ist Zustandsübergangssystem mit Zustandsraum $Z = W \times W = \left\{ (C, C), (C, D), (D, C), (D, D) \right\}$
-        \item Genauer: IPD ist Markov-Prozess $(X_r)_{r\in \mathbb{N}^+_{< n}}$ der Länge $n \in \mathbb{N}^+$, es gilt Markov-Eigenschaft:
+        \item Genauer: IPD ist Markov-Prozess $(X_r)_{r\in \mathbb{N}^+_{< n}}$ der Länge $n \in \mathbb{N}^+$, es gilt Markov-Eigenschaft \cite{sandmann-2007}:
         \[
             \forall r \in \mathbb{N}^+_{< n}, \. \forall z \in Z:
             P\bigl( X_{r + 1} = z_{r + 1} \,\big|\,X_r = z_r, \dots, X_1 = z_1 \bigr) =
@@ -36,7 +36,7 @@
         \]
         \item Markov-Prozess des IPD ist diskret, endlich $\Rightarrow$ diskrete Markov-Kette
         \item Zudem: Übergangswahrscheinlichkeiten sind stationär (runden-unabhängig)
-        \item Daher: Markov-Kette ist homogen: $ \forall r, r\prime \in \mathbb{N}^+_{< n}, \. \forall z_1, z_2 \in Z: P\bigl( X_{r + 1} = z_2 \,\big|\, X_r = z_1 \bigr) = P\bigl( X_{r\prime + 1} = z_2 \,\big|\, X_{r\prime} = z_1 \bigr)$
+        \item Daher: Markov-Kette ist homogen \cite{press-dyson-2012}: $ \forall r, r\prime \in \mathbb{N}^+_{< n}, \. \forall z_1, z_2 \in Z: P\bigl( X_{r + 1} = z_2 \,\big|\, X_r = z_1 \bigr) = P\bigl( X_{r\prime + 1} = z_2 \,\big|\, X_{r\prime} = z_1 \bigr)$
     \end{itemize}
 \end{frame}
 
@@ -71,7 +71,7 @@
 \begin{frame}{Memory-One ist gleich Memory-Many}
     \begin{itemize}
         \item Behauptung: $\forall n \in \mathbb{N}^+, \, \forall g_n \in G^n, \, \forall s_n: G_n \rightarrow W \, \exists s_1: G_1 \rightarrow W: s_n = s_1$ \\
-        \item Beweisidee:
+        \item Beweisidee \cite{press-dyson-2012}:
         \begin{itemize}
             \item Spieler $p_1$ spielt Memory-1, $p_2$ Memory-k: beide spielen $n \in \mathbb{N}^+$ Runden
             \item Nach diesen $n$ Runden: zähle Anzahl Runden $\#W$, in denen Spiel in Zustand $w \in W$ war, z.B. $(C,C): 42, (C,D): 69, (D,C): 37, (D, D): 52$
