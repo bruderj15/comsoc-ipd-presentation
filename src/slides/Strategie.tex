@@ -9,6 +9,7 @@
         \item Spiel und Auszahlungsmatrix ändern sich nicht: Strategien $s^{p_1}, s^{p_2}$ implizieren Markov-Matrix
         \item Daher: Strategie $s^{p_i}$ ausdrückbar als Vektor $v_{s^{p_i}} = (P_{(C, C)}, P_{(C, D)}, P_{(D, C)}, P_{(D, D)})$,
         wobei $P_{W \times W}$ ist Wahrscheinlichkeit, dass Spieler $p_i$ in Runde $r$ wegen Ergebnis($g_{1_{r-1}}$) $ = (w_1, w_2)$ \textbf{kooperiert}
+        \item Score pro Spieler ist Anzahl in Zuständen mit Konfiguration $R, T, S, P$: $R\#(C,C) + \ldots + P\#(D,D)$
     \end{itemize}
 \end{frame}
 
@@ -69,7 +70,6 @@
 
 \begin{frame}{Memory-One ist gleich Memory-Many}
     \begin{itemize}
-        % TODO: Define fun score
         \item Behauptung: $\forall n \in \mathbb{N}^+, \, \forall g_n \in G^n, \, \forall s_n: G_n \rightarrow W \, \exists s_1: G_1 \rightarrow W: s_n = s_1$ \\
         \item Beweisidee:
         \begin{itemize}
@@ -79,7 +79,7 @@
             \item Beide Spieler waren mit fester Wahrscheinlichkeit in einem dieser Zustände: $\frac{\#(C,C)}{n} = \frac{42}{200}, \ldots, \frac{\#(D,D)}{n} = \frac{52}{200}$
             \item Resultierender Wahrscheinlichkeitsvektor $v_{P_{p_i}} = (\frac{42}{200}, \ldots, \ldots, \frac{52}{200})$ kann zu Strategie-Vektor $v_{s^{p_i}}$ transformiert werden
             \item Dieser repräsentiert eine Strategie $s^{p_i}: G_1 \rightarrow W$\\
-            $\Rightarrow$ Eingabe ist Ergebnis letzter Runde - nicht der letzten $n$
+            $\Rightarrow$ Eingabe ist nur Ergebnis letzter Runde
         \end{itemize}
     \end{itemize}
 \end{frame}
