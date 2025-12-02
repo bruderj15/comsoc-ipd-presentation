@@ -3,7 +3,7 @@
 \begin{frame}{Modellierung}
     \begin{itemize}
         \item Abwandlung Wahlfunktion $w: P \rightarrow W$ zu Strategie $s^{p_i}: G_1 \rightarrow W$ \\
-        $\Rightarrow$ $s^{p_i}_k(g_{1{r-1}}) = \ldots$ \\
+        $\Rightarrow$ $s^{p_i}_r(g_{1_{r-1}}) = \ldots$ \\
         $\Rightarrow$ Zugriff auf Ergebnis letzter Runde: Auslegung des Spiels ist \textbf{Memory-One}
         $\Rightarrow$ \textit{Spielen} einer Runde $g_{n_r}$ ist Zustandsübergang in Markov-Kette der Länge $n$
         \item Spiel und Auszahlungsmatrix ändern sich nicht: Strategien $s^{p_1}, s^{p_2}$ implizieren Markov-Matrix
@@ -64,5 +64,22 @@
     \begin{itemize}
         \item $M$ ist zeilen- und spalten-indiziert nach lexikografischer Ordnung über Zustand $Z = W \times W$
         \item Zustandsübergang $(w_1, w_2) \xrightarrow{P_{((w_1, w_2), (w_3, w_4))}} (w_3, w_4)$ mit Übergangswahrscheinlichkeit $P_{((w_1, w_2), (w_3, w_4))} = m_{((w_1, w_2), (w_3, w_4))}$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Memory-One ist gleich Memory-Many}
+    \begin{itemize}
+        % TODO: Define fun score
+        \item Behauptung: $\forall n \in \mathbb{N}^+, \, \forall g_n \in G^n, \, \forall s_n: G_n \rightarrow W \, \exists s_1: G_1 \rightarrow W: s_n = s_1$ \\
+        \item Beweisidee:
+        \begin{itemize}
+            \item Spieler $p_1$ spielt Memory-1, $p_2$ Memory-k: beide spielen $n \in \mathbb{N}^+$ Runden
+            \item Nach diesen $n$ Runden: zähle Anzahl Runden $\#W$, in denen Spiel in Zustand $w \in W$ war, z.B. $(C,C): 42, (C,D): 69, (D,C): 37, (D, D): 52$
+            \item Es gilt: $\sum_{w \in W} \#w = n = 200$
+            \item Beide Spieler waren mit fester Wahrscheinlichkeit in einem dieser Zustände: $\frac{\#(C,C)}{n} = \frac{42}{200}, \ldots, \frac{\#(D,D)}{n} = \frac{52}{200}$
+            \item Resultierender Wahrscheinlichkeitsvektor $v_{P_{p_i}} = (\frac{42}{200}, \ldots, \ldots, \frac{52}{200})$ kann zu Strategie-Vektor $v_{s^{p_i}}$ transformiert werden
+            \item Dieser repräsentiert eine Strategie $s^{p_i}: G_1 \rightarrow W$\\
+            $\Rightarrow$ Eingabe ist Ergebnis letzter Runde - nicht der letzten $n$
+        \end{itemize}
     \end{itemize}
 \end{frame}
