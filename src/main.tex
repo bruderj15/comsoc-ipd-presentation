@@ -9,6 +9,13 @@
 \usepackage{mathtools}
 
 \import{./}{TitlePageInfo.tex}
+\usepackage[
+    backend=biber,
+    style=authoryear,
+    natbib=true,   % so \citep, \citet work
+    maxcitenames=2
+]{biblatex}
+
 \addbibresource{references.bib}
 
 %-------------- Start documents -------------------------------

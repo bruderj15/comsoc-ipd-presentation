@@ -3,10 +3,9 @@
 \begin{frame}{Modellierung}
     \begin{itemize}
         \item Abwandlung Wahlfunktion $w: P \rightarrow W$ zu Strategie $s^{p_i}: G_1 \rightarrow W$ \\
-        $\Rightarrow$ $s^{p_i}_r(g_{1_{r-1}}) = \ldots$ \\
         $\Rightarrow$ Zugriff auf Ergebnis letzter Runde: Auslegung des Spiels ist \textbf{Memory-One}
-        $\Rightarrow$ \textit{Spielen} einer Runde $g_{n_r}$ ist Zustandsübergang in Markov-Kette der Länge $n$
-        \item Spiel und Auszahlungsmatrix ändern sich nicht: Strategien $s^{p_1}, s^{p_2}$ implizieren Markov-Matrix \cite{press-dyson-2012}
+        $\Rightarrow$ \textit{Spielen} einer Runde $g_{n_r}$ ist Zustandsübergang in Markov-Kette der Länge $n$ \parencite{markov-1906}
+        \item Spiel und Auszahlungsmatrix ändern sich nicht: Strategien $s^{p_1}, s^{p_2}$ implizieren Markov-Matrix \parencite{press-dyson-2012}
         \item Daher: Strategie $s^{p_i}$ ausdrückbar als Vektor $v_{s^{p_i}} = (P_{(C, C)}, P_{(C, D)}, P_{(D, C)}, P_{(D, D)})$,
         wobei $P_{W \times W}$ ist Wahrscheinlichkeit, dass Spieler $p_i$ in Runde $r$ wegen Ergebnis($g_{1_{r-1}}$) $ = (w_1, w_2)$ \textbf{kooperiert}
         \item Score pro Spieler ist Anzahl in Zuständen mit Konfiguration $R, T, S, P$: $R\#(C,C) + \ldots + P\#(D,D)$
@@ -18,7 +17,6 @@
         \item All-Defect: $(0, 0, 0, 0)$
         \item All-Cooperate: $(1, 1, 1, 1)$
         \item Tit-For-Tat: $(1, 0, 1, 0)$
-        \item Generous Tit-For-Tat: $(1, q, 1, q)$ mit $0 < q \leq \frac{3}{10}$
         \item Win-Stay Lose-Shift: $(1, 0, 0, 1)$
         \item Random: $(\frac{1}{2}, \frac{1}{2}, \frac{1}{2}, \frac{1}{2})$
         \item Live Demo
@@ -28,7 +26,7 @@
 \begin{frame}{Markov-Kette}
     \begin{itemize}
         \item IPD ist Zustandsübergangssystem mit Zustandsraum $Z = W \times W = \left\{ (C, C), (C, D), (D, C), (D, D) \right\}$
-        \item Genauer: IPD ist Markov-Prozess $(X_r)_{r\in \mathbb{N}^+_{< n}}$ der Länge $n \in \mathbb{N}^+$, es gilt Markov-Eigenschaft \cite{sandmann-2007}:
+        \item Genauer: IPD ist Markov-Prozess $(X_r)_{r\in \mathbb{N}^+_{< n}}$ der Länge $n \in \mathbb{N}^+$, es gilt Markov-Eigenschaft \parencite{markov-1906, sandmann-2007}:
         \[
             \forall r \in \mathbb{N}^+_{< n}, \. \forall z \in Z:
             P\bigl( X_{r + 1} = z_{r + 1} \,\big|\,X_r = z_r, \dots, X_1 = z_1 \bigr) =
@@ -36,7 +34,23 @@
         \]
         \item Markov-Prozess des IPD ist diskret, endlich $\Rightarrow$ diskrete Markov-Kette
         \item Zudem: Übergangswahrscheinlichkeiten sind stationär (runden-unabhängig)
-        \item Daher: Markov-Kette ist homogen \cite{press-dyson-2012}: $ \forall r, r\prime \in \mathbb{N}^+_{< n}, \. \forall z_1, z_2 \in Z: P\bigl( X_{r + 1} = z_2 \,\big|\, X_r = z_1 \bigr) = P\bigl( X_{r\prime + 1} = z_2 \,\big|\, X_{r\prime} = z_1 \bigr)$
+        \item Daher: Markov-Kette ist homogen \parencite{press-dyson-2012}: $ \forall r, r\prime \in \mathbb{N}^+_{< n}, \. \forall z_1, z_2 \in Z: P\bigl( X_{r + 1} = z_2 \,\big|\, X_r = z_1 \bigr) = P\bigl( X_{r\prime + 1} = z_2 \,\big|\, X_{r\prime} = z_1 \bigr)$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Memory-One ist gleich Memory-Many}
+    \begin{itemize}
+        \item Behauptung: Zu Jeder Memory-N Strategie existiert eine äquivalente Memory-1 Strategie
+        \item Formal: $\forall n \in \mathbb{N}^+, \, \forall g_n \in G^n, \, \forall s_n: G_n \rightarrow W \, \exists s_1: G_1 \rightarrow W: s_n = s_1$ \\
+        \item Beweisidee \parencite[vollständig Anhang A Originalpapier]{press-dyson-2012}:
+        \begin{itemize}
+            \item Spieler $p_1$ spielt Memory-1, $p_2$ Memory-k: beide spielen $n \in \mathbb{N}^+$ Runden
+            \item Nach diesen $n$ Runden: zähle Anzahl Runden $\#W$, in denen Spiel in Zustand $w \in W$ war, z.B. $(C,C): 42, (C,D): 69, (D,C): 37, (D, D): 52$
+            \item Es gilt: $\sum_{w \in W} \#w = n = 200$
+            \item Beide Spieler waren mit fester Wahrscheinlichkeit in einem dieser Zustände: $\frac{\#(C,C)}{n} = \frac{42}{200}, \ldots, \frac{\#(D,D)}{n} = \frac{52}{200}$
+            \item Resultierender Wahrscheinlichkeitsvektor $v_{P_{p_i}} = (\frac{42}{200}, \ldots, \ldots, \frac{52}{200})$ kann zu Strategie-Vektor $v_{s^{p_i}}$ transformiert werden
+            \item Dieser repräsentiert eine Strategie $s^{p_i}: G_1 \rightarrow W$\\
+        \end{itemize}
     \end{itemize}
 \end{frame}
 
@@ -64,41 +78,40 @@
     \]
     \begin{itemize}
         \item $M$ ist zeilen- und spalten-indiziert nach lexikografischer Ordnung über Zustand $Z = W \times W$
-        \item Zustandsübergang $(w_1, w_2) \xrightarrow{P_{((w_1, w_2), (w_3, w_4))}} (w_3, w_4)$ mit Übergangswahrscheinlichkeit $P_{((w_1, w_2), (w_3, w_4))} = m_{((w_1, w_2), (w_3, w_4))}$
+        \item Zustandsübergang $(w_1, w_2) \xrightarrow{P_{((w_1, w_2), (w_3, w_4))}} (w_3, w_4)$ mit Übergangswahrscheinlichkeit $P_{((w_1, w_2), (w_3, w_4))} = M_{((w_1, w_2), (w_3, w_4))}$
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Memory-One ist gleich Memory-Many}
+\begin{frame}{Zero-Determinant Strategies I}
     \begin{itemize}
-        \item Behauptung: $\forall n \in \mathbb{N}^+, \, \forall g_n \in G^n, \, \forall s_n: G_n \rightarrow W \, \exists s_1: G_1 \rightarrow W: s_n = s_1$ \\
-        \item Beweisidee \cite{press-dyson-2012}:
-        \begin{itemize}
-            \item Spieler $p_1$ spielt Memory-1, $p_2$ Memory-k: beide spielen $n \in \mathbb{N}^+$ Runden
-            \item Nach diesen $n$ Runden: zähle Anzahl Runden $\#W$, in denen Spiel in Zustand $w \in W$ war, z.B. $(C,C): 42, (C,D): 69, (D,C): 37, (D, D): 52$
-            \item Es gilt: $\sum_{w \in W} \#w = n = 200$
-            \item Beide Spieler waren mit fester Wahrscheinlichkeit in einem dieser Zustände: $\frac{\#(C,C)}{n} = \frac{42}{200}, \ldots, \frac{\#(D,D)}{n} = \frac{52}{200}$
-            \item Resultierender Wahrscheinlichkeitsvektor $v_{P_{p_i}} = (\frac{42}{200}, \ldots, \ldots, \frac{52}{200})$ kann zu Strategie-Vektor $v_{s^{p_i}}$ transformiert werden
-            \item Dieser repräsentiert eine Strategie $s^{p_i}: G_1 \rightarrow W$\\
-            $\Rightarrow$ Eingabe ist nur Ergebnis letzter Runde
-        \end{itemize}
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Zero-Determinant Strategies}
-    \begin{itemize}
-        \item \enquote{\textit{Geniale}} \cite{hilbe-nowak-sigmund-2013} Definition neuer Klasse von Strategien $ZD \subset S$, die LGS erfüllen:
-            {\setlength{\jot}{0.5pt}
+        \item \enquote{\textit{Geniale}} \parencite{hilbe-nowak-sigmund-2013} Definition neuer Klasse von Strategien $ZD \subset S$, die lineares Gleichungssystem (LGS) erfüllen:
+            {\setlength{\jot}{0.1pt}
         \begin{align}
             1 - P_{(C, C)} &= \alpha R + \beta R + \gamma \\
             1 - P_{(C, D)} &= \alpha S + \beta T + \gamma \\
             P_{(D, C)}     &= \alpha T + \beta S + \gamma \\
             P_{(D, D)}     &= \alpha P + \beta P + \gamma
         \end{align}}
-        \item Behauptung: $\forall n \in \mathbb{N}^+, \, \forall g_n \in G^n, \, \forall p_1, p_2 \in P, \, \exists s^{p_1} \in ZD, \, \forall s^{p_2} \in S, \, \exists \alpha, \beta, \gamma \in \mathbb{R}: \alpha\text{score}_{g_n}(s^{p_1}) + \beta\text{score}_{g_n}(s^{p_2}) + \gamma = 0$ (Beweisidee Tafel) \cite{hilbe-nowak-sigmund-2013, press-dyson-2012}
-        \item Unterteilung $ZD = F\,\text{(Forcierung)}\,\dot{\cup}\,E\,\text{(Erpressung)}$ in Sub-Klassen:
+        \item Behauptung: $\exists$ mindestens eine ZD-Strategie, sodass Scores linear abhängig
+        \item Formal: $\forall n \in \mathbb{N}^+, \, \forall g_n \in G^n, \, \forall p_1, p_2 \in P, \, \exists s^{p_1} \in ZD, \, \forall s^{p_2} \in S, \, \exists \alpha, \beta, \gamma \in \mathbb{R}: \alpha\text{score}_{g_n}(s^{p_1}) + \beta\text{score}_{g_n}(s^{p_2}) + \gamma = 0$ \parencite{press-dyson-2012}
+        \item Beweis: LGS für $ZD$ lässt sich aus Markov-Matrix ableiten (Idee Tafel)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Zero-Determinant Strategies II}
+    \begin{itemize}
+        \item Unterteilung $ZD = F\;\dot{\cup}\;E$ in Sub-Klassen \parencite{press-dyson-2012}
+        \item Forcierung $F$ mit \\
+        $\alpha = 0 \neq \beta \rightarrow \text{score}_{g_n}(s^{p_2}) = \frac{-\gamma}{\beta}$
         \begin{itemize}
-            \item $F$ mit $\alpha = 0 \neq \beta \rightarrow \text{score}_{g_n}(s^{p_2}) = \frac{-\gamma}{\beta}$
-            \item $E$ mit $\gamma = -(\alpha + \beta)P \land \chi \coloneqq \frac{-\beta}{\alpha} > 1 \rightarrow \text{score}_{g_n}(s^{p_1}) - P = \chi(\text{score}_{g_n}(s^{p_2}) - P)$
+            \item Gegner-Score ist forciert: $P \leq \text{score}(p_2) \leq R$
+            \item Aber: Eigener Score unbeeinflusst
+        \end{itemize}
+        \item Erpressung $E$ mit
+        $\gamma = -(\alpha + \beta)P \land \chi \coloneqq \frac{-\beta}{\alpha} \geq 1 \rightarrow \text{score}_{g_n}(s^{p_1}) - P = \chi(\text{score}_{g_n}(s^{p_2}) - P)$
+        \begin{itemize}
+            \item Wahl Erpressungsfaktor $\chi \in \mathbb{R}, \chi \geq 1$
+            \item Eigener Score linear abhängig von Gegner-Score
         \end{itemize}
     \end{itemize}
 \end{frame}
