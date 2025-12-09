@@ -26,21 +26,21 @@
 \begin{frame}{Markov-Kette}
     \begin{itemize}
         \item IPD ist Zustandsübergangssystem mit Zustandsraum $Z = W \times W = \left\{ (C, C), (C, D), (D, C), (D, D) \right\}$
-        \item Genauer: IPD ist Markov-Prozess $(X_r)_{r\in \mathbb{N}^+_{< n}}$ der Länge $n \in \mathbb{N}^+$, es gilt Markov-Eigenschaft \parencite{markov-1906, sandmann-2007}:
+        \item Genauer: IPD ist \textbf{Markov-Prozess} $(X_r)_{r\in \mathbb{N}^+_{< n}}$ der Länge $n \in \mathbb{N}^+$, es gilt Markov-Eigenschaft \parencite{markov-1906, sandmann-2007}:
         \[
             \forall r \in \mathbb{N}^+_{< n}, \. \forall z \in Z:
             P\bigl( X_{r + 1} = z_{r + 1} \,\big|\,X_r = z_r, \dots, X_1 = z_1 \bigr) =
             P\bigl( X_{r + 1} = z_{r + 1} \,\big|\, X_r = x_r \bigr)
         \]
-        \item Markov-Prozess des IPD ist diskret, endlich $\Rightarrow$ diskrete Markov-Kette
-        \item Zudem: Übergangswahrscheinlichkeiten sind stationär (runden-unabhängig)
-        \item Daher: Markov-Kette ist homogen \parencite{press-dyson-2012}: $ \forall r, r\prime \in \mathbb{N}^+_{< n}, \. \forall z_1, z_2 \in Z: P\bigl( X_{r + 1} = z_2 \,\big|\, X_r = z_1 \bigr) = P\bigl( X_{r\prime + 1} = z_2 \,\big|\, X_{r\prime} = z_1 \bigr)$
+        \item Markov-Prozess des IPD ist diskret, endlich $\Rightarrow$ \textbf{diskrete} Markov-Kette
+        \item Zudem: Übergangswahrscheinlichkeiten sind \textbf{stationär} (runden-unabhängig)
+        \item Daher: Markov-Kette ist \textbf{homogen} \parencite{press-dyson-2012}: $ \forall r, r\prime \in \mathbb{N}^+_{< n}, \. \forall z_1, z_2 \in Z: P\bigl( X_{r + 1} = z_2 \,\big|\, X_r = z_1 \bigr) = P\bigl( X_{r\prime + 1} = z_2 \,\big|\, X_{r\prime} = z_1 \bigr)$
     \end{itemize}
 \end{frame}
 
 \begin{frame}{Memory-One ist gleich Memory-Many}
     \begin{itemize}
-        \item Behauptung: Zu Jeder Memory-N Strategie existiert eine äquivalente Memory-1 Strategie
+        \item Behauptung: Zu Jeder Memory-N Strategie existiert eine \textbf{äquivalente} Memory-1 Strategie
         \item Formal: $\forall n \in \mathbb{N}^+, \, \forall g_n \in G^n, \, \forall s_n: G_n \rightarrow W \, \exists s_1: G_1 \rightarrow W: s_n = s_1$ \\
         \item Beweisidee \parencite[vollständig Anhang A Originalpapier]{press-dyson-2012}:
         \begin{itemize}
@@ -94,20 +94,20 @@
         \end{align}}
         \item Behauptung: $\exists$ mindestens eine ZD-Strategie, sodass Scores linear abhängig
         \item Formal: $\forall n \in \mathbb{N}^+, \, \forall g_n \in G^n, \, \forall p_1, p_2 \in P, \, \exists s^{p_1} \in ZD, \, \forall s^{p_2} \in S, \, \exists \alpha, \beta, \gamma \in \mathbb{R}: \alpha\text{score}_{g_n}(s^{p_1}) + \beta\text{score}_{g_n}(s^{p_2}) + \gamma = 0$ \parencite{press-dyson-2012}
-        \item Beweis: LGS für $ZD$ lässt sich aus Markov-Matrix ableiten (Idee Tafel)
+        \item Beweis: LGS für $ZD$ lässt sich aus \textbf{Markov-Matrix} ableiten (Idee Tafel)
     \end{itemize}
 \end{frame}
 
 \begin{frame}{Zero-Determinant Strategies II}
     \begin{itemize}
         \item Unterteilung $ZD = F\;\dot{\cup}\;E$ in Sub-Klassen \parencite{press-dyson-2012}
-        \item Forcierung $F$ mit \\
+        \item \textbf{Forcierung} $F$ mit \\
         $\alpha = 0 \neq \beta \rightarrow \text{score}_{g_n}(s^{p_2}) = \frac{-\gamma}{\beta}$
         \begin{itemize}
             \item Gegner-Score ist forciert: $P \leq \text{score}(p_2) \leq R$
             \item Aber: Eigener Score unbeeinflusst
         \end{itemize}
-        \item Erpressung $E$ mit
+        \item \textbf{Erpressung} $E$ mit
         $\gamma = -(\alpha + \beta)P \land \chi \coloneqq \frac{-\beta}{\alpha} \geq 1 \rightarrow \text{score}_{g_n}(s^{p_1}) - P = \chi(\text{score}_{g_n}(s^{p_2}) - P)$
         \begin{itemize}
             \item Wahl Erpressungsfaktor $\chi \in \mathbb{R}, \chi \geq 1$
